@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Minimal working server</title>
+</head>
+<body>
+    <h1>Hola Mundo</h1>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+
+
+        var socket = io();
+
+        socket.on('connect', () => {
+            console.log("Cliente CONECTADO");
+        });
+        
+        socket.on('disconnect', () => {
+            console.log("Perdimos comunicacion con el servidor");
+        });
+
+        socket.emit('mensaje', 'carlos');
+        
+        socket.on('mensaje', (payload)=>{
+            console.log(payload);});
+
+    </script>
+</body>
+</html>
